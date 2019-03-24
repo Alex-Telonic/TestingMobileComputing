@@ -15,6 +15,11 @@ window.addEventListener('devicemotion', function(event) {
 
 });
 
+navigator.geolocation.getCurrentPosition(function(position) {
+document.getElementById("gps").innerHTML = "<h1>" + "latitude: " + position.coords.latitude + "<br>" 
++ "longitude: " + position.coords.longitude + "</h1>";
+});
+
 }
 );
 
