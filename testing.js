@@ -1,4 +1,5 @@
-document.addEventListener("DOMContentLoaded", function(event) {
+
+
 
 // function sayHello(event) {
 // 	console.log(event);
@@ -29,33 +30,42 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 // var maxX = garden.clientWidth  - ball.clientWidth;
 // var maxY = garden.clientHeight - ball.clientHeight;
+function start() {
 var counter = 0;
 var situpboolean = false;
-
+var situpboolean2 = false;
 function handleOrientation(event) {
 
   var x = event.beta;  // In degree in the range [-180,180]
   var y = event.gamma; // In degree in the range [-90,90]
   x = x.toFixed(0);
-
+  y = y.toFixed(0);
+  y = Math.abs(y);
   if (situpboolean == false) { 
   	if (x >= 60) {
   	counter++;
   	situpboolean = true;
 
   }
+  	else if (y >= 60) {
+  		counter++;
+  		situpboolean2 = true;
+  	}
 
 }
   else { 
-  	if (x <= 10) {
+  	if (x <= 10 ) {
   	situpboolean = false;
   }
 
 }
-  var beta = "beta : " + x + "\n";
+  var beta = "beta: " + x;
+  var gamma = "gamma: " + y;
   // innerHTML += "gamma: " + y  + "</h1>";
   $("#beta").text(beta);
+  $("#gamma").text(gamma);
   $("#counter").text( "Counter: " + counter);
+
   // Because we don't want to have the device upside down
   // We constrain the x value to the range [-90,90]
   // if (x >  90) { x =  90};
@@ -75,6 +85,34 @@ function handleOrientation(event) {
 window.addEventListener('deviceorientation', handleOrientation);
 
 
+
+var gn = new GyroNorm();
+
+gn.init().then(function(){
+  gn.start(function(data){
+  	$("#beta_clean").text("clean value: " + data.do.beta);
+    // Process:
+    // data.do.alpha	( deviceorientation event alpha value )
+    // data.do.beta		( deviceorientation event beta value )
+    // data.do.gamma	( deviceorientation event gamma value )
+    // data.do.absolute	( deviceorientation event absolute value )
+
+    // data.dm.x		( devicemotion event acceleration x value )
+    // data.dm.y		( devicemotion event acceleration y value )
+    // data.dm.z		( devicemotion event acceleration z value )
+
+    // data.dm.gx		( devicemotion event accelerationIncludingGravity x value )
+    // data.dm.gy		( devicemotion event accelerationIncludingGravity y value )
+    // data.dm.gz		( devicemotion event accelerationIncludingGravity z value )
+
+    // data.dm.alpha	( devicemotion event rotationRate alpha value )
+    // data.dm.beta		( devicemotion event rotationRate beta value )
+    // data.dm.gamma	( devicemotion event rotationRate gamma value )
+  });
+}).catch(function(e){
+	console.log("Not supported");
+  // Catch if the DeviceOrientation or DeviceMotion is not supported by the browser or device
+});
 // navigator.geolocation.getCurrentPosition(function(position) {
 
 // });
@@ -95,7 +133,6 @@ window.addEventListener('deviceorientation', handleOrientation);
 // };
 
 // var wpid = navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);
-
 }
-);
+
 

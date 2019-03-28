@@ -1,10 +1,20 @@
-#output {
+#output, #cleanValues {
 	font-size: 10vw;
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	right: 50%;
-	bottom: 50%;
-	width: 300px;
-	height: 300px;
+}
+
+#start {
+	width: 100px;
+	height: 100px;
+}
+
+#beta, #beta_clean {
+	background-color: #80ff80;
+}
+
+#gamma {
+	background-color: #80b3ff;
+}
+
+#counter {
+	background-color: #ff6666;
 }

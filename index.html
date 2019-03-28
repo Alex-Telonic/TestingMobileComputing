@@ -10,24 +10,51 @@
     <link href='https://fonts.googleapis.com/css?family=Oxygen:400,300,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="gyronorm/gyronorm.complete.min.js"></script>
 
 </head>
 <body>
-
+<nav id="header-nav" class="navbar navbar-default">
+	<div class="container">
+		<div class="navbar-header">
+			          <a href="index.html" class="pull-left">
+            <div id="logo-img"></div>
+            </a>
+		</div>
+	</div>
+</nav>	
 <!-- <div style="margin: 100px 100px 100px 100px">
 <button  style="padding: 20px 20px 20px 20px">Push</button>
 <input id="text" type="text" name="input">
 <div id="output"></div>
 </div> -->
 
-<div id="motionvalue" style="background-color: gray"> </div>
+<!-- <div id="motionvalue" style="background-color: gray"> </div>
 
-<div id="rotationrate" style="background-color: #ffb3b3"> </div>
+<div id="rotationrate" style="background-color: #ffb3b3"> </div> -->
 <!-- <div id="gps"> </div> -->
 
-<div id="output"> 
-	<div id="beta"> </div>
-	<div id="counter"> </div>
+<div id="main-content" class="container">
+<div>
+	<p>
+		Welcome to this website. It is using the device orientation to count sit ups.
+	</p>
+</div>
+<div id="value" class="row">
+
+<div id="output" class="col-md-12 col-sm-12 col-xs-12">
+	<div>
+	<button type="button" class="btn btn-primary" onclick="start();">Start</button>
+	</div>
+	<div id="beta"> Test</div>
+	<div id="gamma"> Test</div>
+	<div id="counter"> Test</div>
+
+</div>
+
+<div id="cleanValues" class="col-md-12 col-sm-12 col-xs-12">
+	<div id="beta_clean">Test</div>
+</div>
 
 </div>
 
